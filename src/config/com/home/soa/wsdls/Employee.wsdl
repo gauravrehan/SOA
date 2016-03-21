@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:tns="http://com.home.soa" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Employee"
+targetNamespace="http://com.home.soa">
+  <wsdl:types>
+   <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://com.home.soa" schemaLocation="config/com/home/soa/schema/domain.xsd" />             
+   </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EmployeeRequest">
+    <wsdl:part element="tns:EmployeeRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="EmployeeResponse">
+    <wsdl:part element="tns:EmployeeResponse" name="result"/>
+  </wsdl:message>
+  <wsdl:portType name="Employee">
+    <wsdl:operation name="GetEmployeeDetail">
+      <wsdl:input message="tns:EmployeeRequest"/>
+      <wsdl:output message="tns:EmployeeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeeSOAP" type="tns:Employee">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetEmployeeDetail">
+      <soap:operation soapAction="http://com.home.soa/Employee/GetEmployeeDetail"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+<!--   <wsdl:service name="Employee"> -->
+<!--     <wsdl:port binding="tns:EmployeeSOAP" name="EmployeeSOAP"> -->
+<!--       <soap:address location="http://localhost:7080/Employee.wsdl"/> -->
+<!--     </wsdl:port> -->
+<!--   </wsdl:service> -->
+</wsdl:definitions>

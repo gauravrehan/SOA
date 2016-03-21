@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+targetNamespace="http://com.home.soa"
+xmlns="http://com.home.soa"
+elementFormDefault="qualified">
+
+<!-- xmlns:xs means that the elements used in this xsd are from this xml namespace and they have to have xs prefix -->
+<!-- targetnamespace is the namespace for the elements defined in this xsd -->
+<!-- xmlns defines the default namespace -->
+<!-- elementformdefault qualified means that the xml instance in which these elements are used, the elements should be namespace qualified -->
+
+<xs:element name="EmployeeRequest" type="EmployeeRequestMessage"/>
+
+  <xs:complexType name="EmployeeRequestMessage">
+    <xs:sequence>
+      <xs:element name="employeeId" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+<xs:element name="EmployeeResponse" type="EmployeeResponseMessage"/>
+
+  <xs:complexType name="EmployeeResponseMessage">
+    <xs:sequence>
+      <xs:element name="employeeId" type="xs:string"/>
+      <xs:element name="employeeName" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema> 
